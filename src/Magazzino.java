@@ -1,144 +1,241 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
-public class Magazzino implements Prodotti {
+public class Magazzino {
 
-    private ArrayList<Notebook> notebooks = new ArrayList<Notebook>();
+    private ArrayList<Notebook> notebooks = new ArrayList<>();
     private ArrayList<Smartphone> smartphones = new ArrayList<Smartphone>();
     private ArrayList<Tablet> tablets = new ArrayList<Tablet>();
 
-    public Magazzino() {
-    }
+    public Magazzino (){}
 
+    Scanner sc = new Scanner(System.in);
 
-
-    public void inserimentoNotebook() throws IOException {
-
-        String item;
-        String manufacturer;
-        String model;
-        double displaySize;
-        String archiveSpace;
-        double buyingPrice;
-        double sellingPrice;
-
-        /*System.out.println("Inserisci item");
-        item = bf.readLine();
-        System.out.println("Inserisci azienda produttrice");
-        manufacturer = bf.readLine();
-        System.out.println("Inserisci modello");
-        model = bf.readLine();
-        System.out.println("Inserisci dimensione del display");
-        displaySize = Double.parseDouble(bf.readLine());
-        System.out.println("Inserisci memoria di archiviazione");
-        archiveSpace = bf.readLine();
-        System.out.println("Inserisci prezzo di acquisto");
-        buyingPrice = Double.parseDouble(bf.readLine());
-        System.out.println("Inserisci prezzo di vendita");
-        sellingPrice = Double.parseDouble(bf.readLine());*/
-
-        Notebook nb = new Notebook(item, manufacturer, model, displaySize, archiveSpace
-                , buyingPrice, sellingPrice);
+    public void inserimentoNotebook(Notebook nb) throws IOException{
 
         notebooks.add(nb); // In questo modo l'oggetto creato lo salvo nell'aray list.
     }
 
+    public void inserimentoSmartphone(Smartphone sp) throws IOException{
 
-    public void inserimentoSmartphone() throws IOException {
-
-        String item;
-        String manufacturer;
-        String model;
-        double displaySize;
-        String archiveSpace;
-        double buyingPrice;
-        double sellingPrice;
-
-        System.out.println("Inserisci item");
-        item = bf.readLine();
-        System.out.println("Inserisci azienda produttrice");
-        manufacturer = bf.readLine();
-        System.out.println("Inserisci modello");
-        model = bf.readLine();
-        System.out.println("Inserisci dimensione del display");
-        displaySize = Double.parseDouble(bf.readLine());
-        System.out.println("Inserisci memoria di archiviazione");
-        archiveSpace = bf.readLine();
-        System.out.println("Inserisci prezzo di acquisto");
-        buyingPrice = Double.parseDouble(bf.readLine());
-        System.out.println("Inserisci prezzo di vendita");
-        sellingPrice = Double.parseDouble(bf.readLine());
-
-        Smartphone sm = new Smartphone(item, manufacturer, model, displaySize, archiveSpace
-                , buyingPrice, sellingPrice);
-
-        smartphones.add(sm); // In questo modo l'oggetto creato lo salvo nell'aray list.
-
+        smartphones.add(sp); // In questo modo l'oggetto creato lo salvo nell'aray list.
     }
 
-    public void inserimentoTablet() throws IOException {
+    public void inserimentoTablet(Tablet tb) throws IOException{
 
-        String item;
-        String manufacturer;
-        String model;
-        double displaySize;
-        String archiveSpace;
-        double buyingPrice;
-        double sellingPrice;
-
-        System.out.println("Inserisci item");
-        item = bf.readLine();
-        System.out.println("Inserisci azienda produttrice");
-        manufacturer = bf.readLine();
-        System.out.println("Inserisci modello");
-        model = bf.readLine();
-        System.out.println("Inserisci dimensione del display");
-        displaySize = Double.parseDouble(bf.readLine());
-        System.out.println("Inserisci memoria di archiviazione");
-        archiveSpace = bf.readLine();
-        System.out.println("Inserisci prezzo di acquisto");
-        buyingPrice = Double.parseDouble(bf.readLine());
-        System.out.println("Inserisci prezzo di vendita");
-        sellingPrice = Double.parseDouble(bf.readLine());
-
-        Tablet tb = new Tablet(item, manufacturer, model, displaySize, archiveSpace
-                , buyingPrice, sellingPrice);
-
-        tablets.add(tb); // In questo modo l'oggetto creato lo salvo nell'array list.
+        tablets.add(tb); // In questo modo l'oggetto creato lo salvo nell'aray list.
     }
 
-    public void inserimentoProdotto() throws IOException {
+
+    public void inserimentoProdotto() throws IOException{
         int tipo;
+
+        String articolo = "";
+        String produttore = "";
+        String modello = "";
+        double dimensioneDisplay = 0.0;
+        String spazioArchiviazione = "";
+        double prezzoAquisto = 0;
+        double prezzoVendita = 0;
 
         System.out.println("Che prodotto vuoi inserire?");
         System.out.println("1 Notebook");
         System.out.println("2 Smartphone");
         System.out.println("3 Tablet");
 
-        tipo = Integer.parseInt(bf.readLine());
+        tipo = sc.nextInt();
 
-        switch (tipo) {
+        switch(tipo){
+            case 1:{
+                Notebook nb = new Notebook(articolo,produttore,modello,dimensioneDisplay,spazioArchiviazione, prezzoAquisto, prezzoVendita);
+                inserimentoNotebook(nb);
+            } break;
+            case 2:{
+                Smartphone sp = new Smartphone(articolo,produttore,modello,dimensioneDisplay,spazioArchiviazione, prezzoAquisto, prezzoVendita);
+                inserimentoSmartphone(sp);
+            } break;
+            case 3:{
+                Tablet tb = new Tablet(articolo,produttore,modello,dimensioneDisplay,spazioArchiviazione, prezzoAquisto, prezzoVendita);
+                inserimentoTablet(tb);
+            } break;
 
-                case 1:
-                    inserimentoNotebook();
+        }
+    }
 
-                    break;
+    public void scaricoNotebook(Notebook nb){
+        notebooks.remove(nb);
+    }
 
-                case 2:
-                    inserimentoSmartphone();
+    public void scaricoSmartphone(Smartphone sm){
+        notebooks.remove(sm);
+    }
 
-                    break;
+    public void scaricoTablet(Tablet tb){
+        notebooks.remove(tb);
+    }
 
-                case 3:
-                    inserimentoTablet();
 
-                    break;
+    public void scaricoMerce() throws IOException{
 
-                default: throws new IllegalAccessException("invalid");
+        int tipo;
+        String articolo = "";
+        String produttore = "";
+        String modello = "";
+        double dimensioneDisplay = 0.0;
+        String spazioArchiviazione = "";
+        double prezzoAquisto = 0;
+        double prezzoVendita = 0;
 
-            }
 
+
+        System.out.println("Che prodotto vuoi scaricare?");
+        System.out.println("1 Notebook");
+        System.out.println("2 Smartphone");
+        System.out.println("3 Tablet");
+
+        tipo = sc.nextInt();
+
+        switch(tipo){
+            case 1:{
+                Notebook nb = new Notebook(articolo,produttore,modello,dimensioneDisplay,spazioArchiviazione, prezzoAquisto, prezzoVendita);
+                scaricoNotebook(nb);
+            } break;
+            case 2:{
+                Smartphone sp = new Smartphone(articolo,produttore,modello,dimensioneDisplay,spazioArchiviazione, prezzoAquisto, prezzoVendita);
+                scaricoSmartphone(sp);
+            } break;
+            case 3:{
+                Tablet tb = new Tablet(articolo,produttore,modello,dimensioneDisplay,spazioArchiviazione, prezzoAquisto, prezzoVendita);
+                scaricoTablet(tb);
+            } break;
+        }
+    }
+
+    public void StampaMagazzino(){
+
+        System.out.println("I prodotti presenti in magazzino sono i seguenti:");
+
+        System.out.println("NOTEBOOKS");
+        System.out.println("_____________________________");
+
+        for(int i=0; i<notebooks.size();i++){
+            notebooks.get(i).displayInfo();
+            System.out.println("********************************");
+        }
+
+        System.out.println("SMARTPHONES");
+        for(int i=0; i<smartphones.size();i++){
+            smartphones.get(i).displayInfo();
+            System.out.println("********************************");
+        }
+
+        System.out.println("TABLETS");
+        for(int i=0; i<tablets.size();i++){
+            tablets.get(i).displayInfo();
+            System.out.println("********************************");
+        }
+    }
+
+    public void ricercaModelloNotebook(){
+        String modello = " ";
+        boolean found = false;
+        int i = 0;
+
+        System.out.println("Inserisci il modello da ricercare");
+        modello = sc.nextLine();
+
+        //Ciclca finche non trova il modello nell'array list e l'indice è inferiore alla dimensione
+        while(!notebooks.get(i).getModello().equals(modello) && i<notebooks.size()){
+            i++;
+        }
+
+        if(i<notebooks.size()){
+            notebooks.get(i).displayInfo();
+        } else {
+            System.out.println("Spiacente, modello non trovato");
+        }
+    }
+
+    public void ricercaModelloSmartphone(){
+        String modello = " ";
+        boolean found = false;
+        int i = 0;
+
+        System.out.println("Inserisci il modello da ricercare");
+        modello = sc.nextLine();
+
+        //Ciclca finche non trova il modello nell'array list e l'indice è inferiore alla dimensione
+        while(!smartphones.get(i).getModello().equals(modello) && i<smartphones.size()){
+            i++;
+        }
+
+        if(i<smartphones.size()){
+            smartphones.get(i).displayInfo();
+        } else {
+            System.out.println("Spiacente, modello non trovato");
+        }
+    }
+
+    public void ricercaModelloTablet(){
+        String modello = " ";
+        boolean found = false;
+        int i = 0;
+
+        System.out.println("Inserisci il modello da ricercare");
+        modello = sc.nextLine();
+
+        //Ciclca finche non trova il modello nell'array list e l'indice è inferiore alla dimensione
+        while(!tablets.get(i).getModello().equals(modello) && i<tablets.size()){
+            i++;
+        }
+
+        if(i<tablets.size()){
+            tablets.get(i).displayInfo();
+        } else {
+            System.out.println("Spiacente, modello non trovato");
+        }
+    }
+
+    public void ricercaModello() throws IOException{
+        int tipo;
+
+        System.out.println("Di quale prodotto ricerchi il modello?");
+        System.out.println("1 Notebook");
+        System.out.println("2 Smartphone");
+        System.out.println("3 Tablet");
+
+        tipo = sc.nextInt();
+
+        switch(tipo){
+            case 1:{
+                ricercaModelloNotebook();
+            } break;
+            case 2:{
+                ricercaModelloSmartphone();
+            } break;
+            case 3:{
+                ricercaModelloTablet();
+            } break;
+        }
+    }
+
+
+    public int contaProdotti() throws IOException{
+        return notebooks.size() + smartphones.size() + tablets.size();
+    }
+
+    public int contaNotebooks() throws IOException{
+        return notebooks.size();
+    }
+
+    public int contaTablets() throws IOException{
+        return tablets.size();
+    }
+
+    public int contaSmartphones() throws IOException{
+        return smartphones.size();
     }
 
     public ArrayList<Notebook> getNotebooks() {
@@ -163,10 +260,5 @@ public class Magazzino implements Prodotti {
 
     public void setTablets(ArrayList<Tablet> tablets) {
         this.tablets = tablets;
-    }
-
-    @Override
-    public void displayInfo() {
-
     }
 }
