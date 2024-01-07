@@ -1,9 +1,11 @@
+import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
-
+    static Magazzino magazzino = new Magazzino();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -13,7 +15,7 @@ public class Main {
                 System.out.println("1. Aggiungi a magazzino");
                 System.out.println("2. Scarico merce da magazzino");
                 System.out.println("3. Creazione carrello");
-                System.out.println("4. Aggiungi elemento al carrello");
+                System.out.println("4. Gestisci carrello");
                 System.out.println("5. Stampa dispositivi magazzino");
                 System.out.println("6. Ricerca tipo di dispositivo");
                 System.out.println("7. Ricerca produttore");
@@ -21,56 +23,103 @@ public class Main {
                 System.out.println("9. Ricerca prezzo di vendita");
                 System.out.println("10. Ricerca prezzo di acquisto");
                 System.out.println("11. Ricerca per range di prezzo");
-                System.out.println("0. Esci");
+                System.out.println("12. Inizializza magazzino");
+                System.out.println("13 - Scarica prodotto da magazzino tramite id");
+                System.out.println("0. Esci\n");
 
                 int opzione = scanner.nextInt();
 
                 switch (opzione) {
                     case 1:
-//                        aggiungiMagazzino();
+                        try {
+                            magazzino.inserimentoProdotto();
+                        } catch (IOException e) {
+                            System.err.println(e.getMessage());
+                        }
 
                         break;
 
                     case 2:
-//                        scaricomerce();
-
+                        try {
+                            magazzino.scaricoMerce();
+                        } catch (IOException e) {
+                            System.err.println(e.getMessage());
+                        }
                         break;
 
                     case 3:
-//                        creaCarello();
-
+                        GestoreCarrello.creaCarrello();
+                        System.out.println("Carrello creato");
                         break;
 
                     case 4:
-//                        aggiungiElementoCarello();
+                        GestoreCarrello.gestisciCarrello(magazzino);
                         break;
 
                     case 5:
-//                        stampaMagazzino();
+                        magazzino.stampaMagazzino();
                         break;
 
                     case 6:
-//                        ricercaTipo();
+                        try {
+                            List<Prodotto> prodotti = magazzino.ricercaTipo();
+                            stampaProdotti(prodotti);
+                        } catch (Exception e) {
+                            System.err.println(e.getMessage());
+                        }
                         break;
 
                     case 7:
-//                        ricercaProduttore();
+                        try {
+                            List<Prodotto> prodotti = magazzino.ricercaProduttore();
+                            stampaProdotti(prodotti);
+                        } catch (Exception e) {
+                            System.err.println(e.getMessage());
+                        }
                         break;
 
                     case 8:
-//                        ricercaModello();
+                        try {
+                            List<Prodotto> prodotti = magazzino.ricercaModello();
+                            stampaProdotti(prodotti);
+                        } catch (Exception e) {
+                            System.err.println(e.getMessage());
+                        }
                         break;
 
                     case 9:
-//                        ricercaPrezzoVendita();
+                        try {
+                            List<Prodotto> prodotti = magazzino.ricercaPrezzoVendita();
+                            stampaProdotti(prodotti);
+                        } catch (Exception e) {
+                            System.err.println(e.getMessage());
+                        }
                         break;
 
                     case 10:
-//                        ricercaPrezzoAcquisto();
+                        try {
+                            List<Prodotto> prodotti = magazzino.ricercaPrezzoAcquisto();
+                            stampaProdotti(prodotti);
+                        } catch (Exception e) {
+                            System.err.println(e.getMessage());
+                        }
                         break;
 
                     case 11:
-//                        ricercaRangePrezzo();
+                        try {
+                            List<Prodotto> prodotti = magazzino.ricercaRangeDiPrezzo();
+                            stampaProdotti(prodotti);
+                        } catch (Exception e) {
+                            System.err.println(e.getMessage());
+                        }
+                        break;
+
+                    case 12:
+                        magazzino.inizializzaMagazzino();
+                        break;
+
+                    case 13:
+                        magazzino.scaricoMerceTramiteId();
                         break;
 
                     case 0:
@@ -80,9 +129,16 @@ public class Main {
 
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Errore: inserisci un numero valido.");
+                System.out.println("Errore: inserisci un numero valido.\n");
                 scanner.next();
             }
+        }
+    }
+
+    static void stampaProdotti(List<Prodotto> prodotti) {
+        System.out.println("Trovati " + prodotti.size() + " prodotti");
+        for (Prodotto prodotto: prodotti) {
+            prodotto.displayInfo();
         }
     }
 }
