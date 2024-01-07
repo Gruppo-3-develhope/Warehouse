@@ -1,6 +1,6 @@
 import java.util.UUID;
 
-public class Tablet  {
+public class Tablet implements Prodotti {
     private UUID id;
     private String articolo;
     private String produttore;
