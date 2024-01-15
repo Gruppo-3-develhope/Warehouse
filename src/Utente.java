@@ -3,12 +3,9 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
-
+public class Utente {
     static Magazzino magazzino = new Magazzino();
-
-    public static void main(String[] args) {
-        GestoreUtenti.gestoreUtenti();
+    public static void utenteNormale() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
@@ -135,11 +132,11 @@ public class Main {
             }
         }
     }
-
     static void stampaProdotti(List<Prodotto> prodotti) {
         System.out.println("Trovati " + prodotti.size() + " prodotti");
         for (Prodotto prodotto: prodotti) {
             prodotto.displayInfo();
         }
     }
-}
+    }
+
