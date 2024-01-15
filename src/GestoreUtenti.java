@@ -21,11 +21,12 @@ public class GestoreUtenti {
             switch (scelta) {
                 case 1:
                     System.out.println("Hai selezionato Utente Normale.");
-
+                    Utente.utenteNormale();
 
                     break;
                 case 2:
                     System.out.println("Hai selezionato Utente Amministratore.");
+                    Amministratore.utenteAmministratore();
                     break;
                 case 0:
                     System.out.println("Uscita dal programma.");
