@@ -11,8 +11,8 @@ public class Utente {
         while (true) {
             try {
                 System.out.println("Seleziona un'operazione:");
-             //   System.out.println("1. Aggiungi a magazzino");
-            //    System.out.println("2. Scarico merce da magazzino");
+                //   System.out.println("1. Aggiungi a magazzino");
+                //    System.out.println("2. Scarico merce da magazzino");
                 System.out.println("3. Creazione carrello");
                 System.out.println("4. Gestisci carrello");
                 System.out.println("5. Stampa dispositivi magazzino");
@@ -20,10 +20,10 @@ public class Utente {
                 System.out.println("7. Ricerca produttore");
                 System.out.println("8. Ricerca modello");
                 System.out.println("9. Ricerca prezzo di vendita");
-             //   System.out.println("10. Ricerca prezzo di acquisto");
+                //   System.out.println("10. Ricerca prezzo di acquisto");
                 System.out.println("11. Ricerca per range di prezzo");
                 System.out.println("12. Inizializza magazzino");
-           //     System.out.println("13 - Scarica prodotto da magazzino tramite id");
+                //     System.out.println("13 - Scarica prodotto da magazzino tramite id");
                 System.out.println("0. Esci\n");
 
                 int opzione = scanner.nextInt();
