@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Amministratore {
     static Magazzino magazzino = new Magazzino();
+
     public static void utenteAmministratore() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -132,9 +133,10 @@ public class Amministratore {
             }
         }
     }
+
     static void stampaProdotti(List<Prodotto> prodotti) {
         System.out.println("Trovati " + prodotti.size() + " prodotti");
-        for (Prodotto prodotto: prodotti) {
+        for (Prodotto prodotto : prodotti) {
             prodotto.displayInfo();
         }
     }

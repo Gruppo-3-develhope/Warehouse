@@ -10,34 +10,34 @@ public class GestoreUtenti {
         System.out.println("Benvenuto nel nostro ecommerce!");
         while (true) {
 
-        try {
-            System.out.println("Seleziona il tipo di utente:");
-            System.out.println("1. Utente normale");
-            System.out.println("2. Utente amministratore");
-            System.out.println("0. Esci");
+            try {
+                System.out.println("Seleziona il tipo di utente:");
+                System.out.println("1. Utente normale");
+                System.out.println("2. Utente amministratore");
+                System.out.println("0. Esci");
 
-            int scelta = scanner.nextInt();
+                int scelta = scanner.nextInt();
 
-            switch (scelta) {
-                case 1:
-                    System.out.println("Hai selezionato Utente Normale.");
-                    Utente.utenteNormale();
+                switch (scelta) {
+                    case 1:
+                        System.out.println("Hai selezionato Utente Normale.");
+                        Utente.utenteNormale();
 
-                    break;
-                case 2:
-                    System.out.println("Hai selezionato Utente Amministratore.");
-                    Amministratore.utenteAmministratore();
-                    break;
-                case 0:
-                    System.out.println("Uscita dal programma.");
-                    System.exit(0);
-                    break;
+                        break;
+                    case 2:
+                        System.out.println("Hai selezionato Utente Amministratore.");
+                        Amministratore.utenteAmministratore();
+                        break;
+                    case 0:
+                        System.out.println("Uscita dal programma.");
+                        System.exit(0);
+                        break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Errore: inserisci un numero valido.\n");
+                scanner.next();
             }
-        }   catch (InputMismatchException e) {
-            System.out.println("Errore: inserisci un numero valido.\n");
-            scanner.next();
         }
-    }
 
     }
 }
