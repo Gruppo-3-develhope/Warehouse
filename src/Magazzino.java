@@ -145,12 +145,11 @@ public class Magazzino {
         return prodottiTrovati;
     }
 
-    public List<Prodotto> ricercaPrezzoVendita() throws Exception {
-        System.out.println("Inserisci il prezzo di vendita da ricercare");
-        double prezzoDiVendita = Double.parseDouble(sc.nextLine());
-        List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getPrezzoVendita() == prezzoDiVendita).toList();
+    public List<Prodotto> ricercaPrezzoVendita(double priceSearch) throws Exception {
+    //    System.out.println("Inserisci il prezzo di vendita da ricercare");
+      //  double prezzoDiVendita = Double.parseDouble(sc.nextLine());
+        List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getPrezzoVendita() == priceSearch).toList();
         if (prodottiTrovati.isEmpty()) {
-            System.out.println("Nessun prezzo di vendita di " + prezzoDiVendita + " trovato!");
             throw new Exception("Not Found");
         }
         return prodottiTrovati;

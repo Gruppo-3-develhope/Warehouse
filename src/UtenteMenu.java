@@ -86,12 +86,25 @@ public class UtenteMenu {
                         break;
 
                     case 9:
+                        double priceSearch = 0.0;
+                        System.out.println("Inserisci il prezzo di vendita da ricercare");
+                        scanner.nextLine();
+                        do {
+                            try {
+
+                                priceSearch = Double.parseDouble(scanner.nextLine());
+                                break;
+
+                            } catch (NumberFormatException e) {
+                                System.out.println("Input non valido. Assicurati di inserire un numero in virgola mobile.");
+                            }
+                        } while (true);
                         try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita(priceSearch);
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
+                            System.out.println("Nessun prezzo di vendita di " + priceSearch + " trovato!");
+                }
                         break;
 
                     case 10:

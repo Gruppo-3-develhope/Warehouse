@@ -85,8 +85,10 @@ public class AmministratoreMenu {
                         break;
 
                     case 9:
+                        String stringPriceSearch = scanner.nextLine();
+                        double priceSearch = Double.parseDouble(stringPriceSearch);
                         try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita(priceSearch);
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
                             System.err.println(e.getMessage());
