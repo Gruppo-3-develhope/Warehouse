@@ -22,7 +22,7 @@ public class Utente {
                 System.out.println("9. Ricerca prezzo di vendita");
                 //   System.out.println("10. Ricerca prezzo di acquisto");
                 System.out.println("11. Ricerca per range di prezzo");
-                System.out.println("12. Inizializza magazzino");
+                // System.out.println("12. Inizializza magazzino");
                 //     System.out.println("13 - Scarica prodotto da magazzino tramite id");
                 System.out.println("0. Esci\n");
 
