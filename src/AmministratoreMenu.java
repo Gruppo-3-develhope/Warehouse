@@ -3,16 +3,14 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class Utente {
-    static Magazzino magazzino = new Magazzino();
-
-    public static void utenteNormale() {
+public class AmministratoreMenu {
+    public static void utenteAmministratore() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
                 System.out.println("Seleziona un'operazione:");
-                //   System.out.println("1. Aggiungi a magazzino");
-                //    System.out.println("2. Scarico merce da magazzino");
+                System.out.println("1. Aggiungi a magazzino");
+                System.out.println("2. Scarico merce da magazzino");
                 System.out.println("3. Creazione carrello");
                 System.out.println("4. Gestisci carrello");
                 System.out.println("5. Stampa dispositivi magazzino");
@@ -20,10 +18,10 @@ public class Utente {
                 System.out.println("7. Ricerca produttore");
                 System.out.println("8. Ricerca modello");
                 System.out.println("9. Ricerca prezzo di vendita");
-                //   System.out.println("10. Ricerca prezzo di acquisto");
+                System.out.println("10. Ricerca prezzo di acquisto");
                 System.out.println("11. Ricerca per range di prezzo");
-                // System.out.println("12. Inizializza magazzino");
-                //     System.out.println("13 - Scarica prodotto da magazzino tramite id");
+                System.out.println("12. Inizializza magazzino");
+                System.out.println("13 - Scarica prodotto da magazzino tramite id");
                 System.out.println("0. Esci\n");
 
                 int opzione = scanner.nextInt();
@@ -31,7 +29,7 @@ public class Utente {
                 switch (opzione) {
                     case 1:
                         try {
-                            magazzino.inserimentoProdotto();
+                            Main.magazzino.inserimentoProdotto();
                         } catch (IOException e) {
                             System.err.println(e.getMessage());
                         }
@@ -40,7 +38,7 @@ public class Utente {
 
                     case 2:
                         try {
-                            magazzino.scaricoMerce();
+                            Main.magazzino.scaricoMerce();
                         } catch (IOException e) {
                             System.err.println(e.getMessage());
                         }
@@ -52,16 +50,16 @@ public class Utente {
                         break;
 
                     case 4:
-                        GestoreCarrello.gestisciCarrello(magazzino);
+                        GestoreCarrello.gestisciCarrello(Main.magazzino);
                         break;
 
                     case 5:
-                        magazzino.stampaMagazzino();
+                        Main.magazzino.stampaMagazzino();
                         break;
 
                     case 6:
                         try {
-                            List<Prodotto> prodotti = magazzino.ricercaTipo();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaTipo();
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
                             System.err.println(e.getMessage());
@@ -70,7 +68,7 @@ public class Utente {
 
                     case 7:
                         try {
-                            List<Prodotto> prodotti = magazzino.ricercaProduttore();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaProduttore();
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
                             System.err.println(e.getMessage());
@@ -79,7 +77,7 @@ public class Utente {
 
                     case 8:
                         try {
-                            List<Prodotto> prodotti = magazzino.ricercaModello();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaModello();
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
                             System.err.println(e.getMessage());
@@ -88,7 +86,7 @@ public class Utente {
 
                     case 9:
                         try {
-                            List<Prodotto> prodotti = magazzino.ricercaPrezzoVendita();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita();
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
                             System.err.println(e.getMessage());
@@ -97,7 +95,7 @@ public class Utente {
 
                     case 10:
                         try {
-                            List<Prodotto> prodotti = magazzino.ricercaPrezzoAcquisto();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoAcquisto();
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
                             System.err.println(e.getMessage());
@@ -106,7 +104,7 @@ public class Utente {
 
                     case 11:
                         try {
-                            List<Prodotto> prodotti = magazzino.ricercaRangeDiPrezzo();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaRangeDiPrezzo();
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
                             System.err.println(e.getMessage());
@@ -114,11 +112,11 @@ public class Utente {
                         break;
 
                     case 12:
-                        magazzino.inizializzaMagazzino();
+                        Main.magazzino.inizializzaMagazzino();
                         break;
 
                     case 13:
-                        magazzino.scaricoMerceTramiteId();
+                        Main.magazzino.scaricoMerceTramiteId();
                         break;
 
                     case 0:
@@ -141,4 +139,3 @@ public class Utente {
         }
     }
 }
-
