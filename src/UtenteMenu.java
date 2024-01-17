@@ -69,12 +69,12 @@ public class UtenteMenu {
                         System.out.println("Inserisci il prezzo di vendita da ricercare");
                         do {
                             try {
-                                scanner.nextLine();
                                 priceSearch = scanner.nextDouble();
                                 break;
 
                             } catch (InputMismatchException e) {
                                 System.out.println("Input non valido. Assicurati di inserire un numero in virgola mobile.");
+                                scanner.nextLine();
                             }
                         } while (true);
                         try {
