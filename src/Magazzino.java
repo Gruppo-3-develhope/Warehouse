@@ -146,8 +146,6 @@ public class Magazzino {
     }
 
     public List<Prodotto> ricercaPrezzoVendita(double priceSearch) throws Exception {
-    //    System.out.println("Inserisci il prezzo di vendita da ricercare");
-      //  double prezzoDiVendita = Double.parseDouble(sc.nextLine());
         List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getPrezzoVendita() == priceSearch).toList();
         if (prodottiTrovati.isEmpty()) {
             throw new Exception("Not found");
