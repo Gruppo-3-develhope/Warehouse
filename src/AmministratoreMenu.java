@@ -85,8 +85,18 @@ public class AmministratoreMenu {
                         break;
 
                     case 9:
-                        String stringPriceSearch = scanner.nextLine();
-                        double priceSearch = Double.parseDouble(stringPriceSearch);
+                        double priceSearch;
+                        System.out.println("Inserisci il prezzo di vendita da ricercare");
+                        do {
+                            try {
+                                scanner.nextLine();
+                                priceSearch = scanner.nextDouble();
+                                break;
+
+                            } catch (InputMismatchException e) {
+                                System.out.println("Input non valido. Assicurati di inserire un numero in virgola mobile.");
+                            }
+                        } while (true);
                         try {
                             List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita(priceSearch);
                             stampaProdotti(prodotti);

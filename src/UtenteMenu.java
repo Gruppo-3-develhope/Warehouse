@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -10,55 +9,35 @@ public class UtenteMenu {
         while (true) {
             try {
                 System.out.println("Seleziona un'operazione:");
-                //   System.out.println("1. Aggiungi a magazzino");
-                //    System.out.println("2. Scarico merce da magazzino");
-                System.out.println("3. Creazione carrello");
-                System.out.println("4. Gestisci carrello");
-                System.out.println("5. Stampa dispositivi magazzino");
-                System.out.println("6. Ricerca tipo di dispositivo");
-                System.out.println("7. Ricerca produttore");
-                System.out.println("8. Ricerca modello");
-                System.out.println("9. Ricerca prezzo di vendita");
-                //   System.out.println("10. Ricerca prezzo di acquisto");
-                System.out.println("11. Ricerca per range di prezzo");
-                // System.out.println("12. Inizializza magazzino");
-                //     System.out.println("13 - Scarica prodotto da magazzino tramite id");
+                System.out.println("1. Creazione carrello");
+                System.out.println("2. Gestisci carrello");
+                System.out.println("3. Stampa dispositivi magazzino");
+                System.out.println("4. Ricerca tipo di dispositivo");
+                System.out.println("5. Ricerca produttore");
+                System.out.println("6. Ricerca modello");
+                System.out.println("7. Ricerca prezzo di vendita");
+                System.out.println("8. Ricerca per range di prezzo");
                 System.out.println("0. Esci\n");
 
                 int opzione = scanner.nextInt();
 
                 switch (opzione) {
+
+
                     case 1:
-                        try {
-                            Main.magazzino.inserimentoProdotto();
-                        } catch (IOException e) {
-                            System.err.println(e.getMessage());
-                        }
-
-                        break;
-
-                    case 2:
-                        try {
-                            Main.magazzino.scaricoMerce();
-                        } catch (IOException e) {
-                            System.err.println(e.getMessage());
-                        }
-                        break;
-
-                    case 3:
                         GestoreCarrello.creaCarrello();
                         System.out.println("Carrello creato");
                         break;
 
-                    case 4:
+                    case 2:
                         GestoreCarrello.gestisciCarrello(Main.magazzino);
                         break;
 
-                    case 5:
+                    case 3:
                         Main.magazzino.stampaMagazzino();
                         break;
 
-                    case 6:
+                    case 4:
                         try {
                             List<Prodotto> prodotti = Main.magazzino.ricercaTipo();
                             stampaProdotti(prodotti);
@@ -67,7 +46,7 @@ public class UtenteMenu {
                         }
                         break;
 
-                    case 7:
+                    case 5:
                         try {
                             List<Prodotto> prodotti = Main.magazzino.ricercaProduttore();
                             stampaProdotti(prodotti);
@@ -76,7 +55,7 @@ public class UtenteMenu {
                         }
                         break;
 
-                    case 8:
+                    case 6:
                         try {
                             List<Prodotto> prodotti = Main.magazzino.ricercaModello();
                             stampaProdotti(prodotti);
@@ -85,17 +64,16 @@ public class UtenteMenu {
                         }
                         break;
 
-                    case 9:
-                        double priceSearch = 0.0;
+                    case 7:
+                        double priceSearch;
                         System.out.println("Inserisci il prezzo di vendita da ricercare");
-                        scanner.nextLine();
                         do {
                             try {
-
-                                priceSearch = Double.parseDouble(scanner.nextLine());
+                                scanner.nextLine();
+                                priceSearch = scanner.nextDouble();
                                 break;
 
-                            } catch (NumberFormatException e) {
+                            } catch (InputMismatchException e) {
                                 System.out.println("Input non valido. Assicurati di inserire un numero in virgola mobile.");
                             }
                         } while (true);
@@ -103,34 +81,18 @@ public class UtenteMenu {
                             List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita(priceSearch);
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
-                            System.out.println("Nessun prezzo di vendita di " + priceSearch + " trovato!");
+                            System.err.println(e.getMessage());
                 }
                         break;
 
-                    case 10:
-                        try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoAcquisto();
-                            stampaProdotti(prodotti);
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
-                        break;
 
-                    case 11:
+                    case 8:
                         try {
                             List<Prodotto> prodotti = Main.magazzino.ricercaRangeDiPrezzo();
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
                             System.err.println(e.getMessage());
                         }
-                        break;
-
-                    case 12:
-                        Main.magazzino.inizializzaMagazzino();
-                        break;
-
-                    case 13:
-                        Main.magazzino.scaricoMerceTramiteId();
                         break;
 
                     case 0:
