@@ -24,12 +24,15 @@ public class GestoreCarrello {
                 switch (operazione) {
                     case 1:
                         System.out.println("Inserisci ID prodotto: ");
-                        String idDaAggiungere = scanner.nextLine();
-                        carrello.aggiungiAlCarrello(magazzino, idDaAggiungere);
-                        break;
+                        scanner.nextLine();
+                                String idDaAggiungere = scanner.nextLine();
+                                carrello.aggiungiAlCarrello(magazzino, idDaAggiungere);
+                                break;
+
 
                     case 2:
                         System.out.println("Inserisci ID prodotto");
+                        scanner.nextLine();
                         String idDaRimuovere = scanner.nextLine();
                         carrello.rimuoviDalCarrello(idDaRimuovere);
                         break;
