@@ -24,7 +24,7 @@ public class Magazzino {
         prodotti.add(prodotto);
     }
 
-   //TODO tipo
+
     public void inserimentoProdotto(int tipo) throws IOException {
 
         Prodotto prodotto;
