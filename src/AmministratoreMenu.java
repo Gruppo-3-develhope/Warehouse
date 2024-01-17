@@ -131,6 +131,7 @@ public class AmministratoreMenu {
                         break;
 
                     case 0:
+                        scanner.close();
                         System.out.println("Uscita dal programma.");
                         System.exit(0);
                         break;
