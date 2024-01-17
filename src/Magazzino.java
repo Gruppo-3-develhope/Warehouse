@@ -150,7 +150,7 @@ public class Magazzino {
       //  double prezzoDiVendita = Double.parseDouble(sc.nextLine());
         List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getPrezzoVendita() == priceSearch).toList();
         if (prodottiTrovati.isEmpty()) {
-            throw new Exception("Nessun prezzo di vendita di " + priceSearch + " trovato!");
+            throw new Exception("Not found");
         }
         return prodottiTrovati;
     }

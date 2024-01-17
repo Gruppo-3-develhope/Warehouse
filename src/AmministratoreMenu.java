@@ -101,8 +101,7 @@ public class AmministratoreMenu {
                             List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita(priceSearch);
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
+                            System.out.println("Nessun prezzo di vendita di " + priceSearch + " trovato!");                        }
                         break;
 
                     case 10:
