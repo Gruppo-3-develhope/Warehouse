@@ -24,11 +24,10 @@ public class Magazzino {
         prodotti.add(prodotto);
     }
 
-    public void inserimentoProdotto() throws IOException {
-        int tipo = richiediTipoProdotto();
+   //TODO tipo
+    public void inserimentoProdotto(int tipo) throws IOException {
 
         Prodotto prodotto;
-
         System.out.println("\nInserisci il produttore");
         String produttore = sc.nextLine();
         System.out.println("\nInserisci il modello");
@@ -95,8 +94,7 @@ public class Magazzino {
         }
     }
 
-    public List<Prodotto> ricercaTipo() throws Exception {
-        int tipo = richiediTipoProdotto();
+    public List<Prodotto> ricercaTipo(int tipo) throws Exception {
 
         TipoProdotto tipoProdotto = switch (tipo) {
             case 1 -> TipoProdotto.NOTEBOOK;
@@ -106,7 +104,6 @@ public class Magazzino {
 
         List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getArticolo().equals(tipoProdotto)).toList();
         if (prodottiTrovati.isEmpty()) {
-            System.out.println("Nessun " + tipoProdotto.name() + " trovato!");
             throw new Exception("Not Found");
         }
         return prodottiTrovati;
@@ -212,17 +209,15 @@ public class Magazzino {
         prodotti.addAll(tablets);
     }
 
-    private int richiediTipoProdotto() {
-        int tipo = 0;
-        do {
-            System.out.println("Inserisci il tipo di articolo da ricercare");
-            System.out.println("1 Notebook");
-            System.out.println("2 Smartphone");
-            System.out.println("3 Tablet\n");
-            tipo = Integer.parseInt(sc.nextLine());
-        } while (tipo < 1 || tipo > 3);
-        return tipo;
-    }
+//    public int richiediTipoProdotto(int tipo) {
+//        do {
+//            System.out.println("Inserisci il tipo di articolo da ricercare");
+//            System.out.println("1 Notebook");
+//            System.out.println("2 Smartphone");
+//            System.out.println("3 Tablet\n");
+//        } while (tipo < 1 || tipo > 3);
+//        return tipo;
+//    }
 }
 
 

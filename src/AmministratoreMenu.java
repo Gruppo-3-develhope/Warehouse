@@ -25,11 +25,33 @@ public class AmministratoreMenu {
                 System.out.println("0. Esci\n");
 
                 int opzione = scanner.nextInt();
+                int tipo = 0;
 
                 switch (opzione) {
+
                     case 1:
+
+
+                        while (true) {
+                            try {
+                                System.out.println("Inserisci il tipo di articolo da ricercare");
+                                System.out.println("1 Notebook");
+                                System.out.println("2 Smartphone");
+                                System.out.println("3 Tablet\n");
+                                tipo = scanner.nextInt();
+                                if (tipo < 1 || tipo > 3) {
+                                    System.out.println("Devi inserire solo i valori 1, 2 o 3. Riprova.");
+                                    scanner.nextLine();
+                                } else {
+                                    break;
+                                }
+                            } catch (InputMismatchException e) {
+                                System.out.println("Devi inserire un numero intero (1, 2 o 3): ");
+                                scanner.nextLine();
+                            }
+                        }
                         try {
-                            Main.magazzino.inserimentoProdotto();
+                            Main.magazzino.inserimentoProdotto(tipo);
                         } catch (IOException e) {
                             System.err.println(e.getMessage());
                         }
@@ -58,11 +80,29 @@ public class AmministratoreMenu {
                         break;
 
                     case 6:
+                        while (true) {
+                            try {
+                                System.out.println("Inserisci il tipo di articolo da ricercare");
+                                System.out.println("1 Notebook");
+                                System.out.println("2 Smartphone");
+                                System.out.println("3 Tablet\n");
+                                tipo = scanner.nextInt();
+                                if (tipo < 1 || tipo > 3) {
+                                    System.out.println("Devi inserire solo i valori 1, 2 o 3. Riprova.");
+                                    scanner.nextLine();
+                                } else {
+                                    break;
+                                }
+                            } catch (InputMismatchException e) {
+                                System.out.println("Devi inserire un numero intero (1, 2 o 3): ");
+                                scanner.nextLine();
+                            }
+                        }
                         try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaTipo();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaTipo(tipo);
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
-                            System.err.println(e.getMessage());
+                            System.out.println("Nessun prodotto di quel tipo trovato!");
                         }
                         break;
 
@@ -101,7 +141,8 @@ public class AmministratoreMenu {
                             List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita(priceSearch);
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
-                            System.out.println("Nessun prezzo di vendita di " + priceSearch + " trovato!");                        }
+                            System.out.println("Nessun prezzo di vendita di " + priceSearch + " trovato!");
+                        }
                         break;
 
                     case 10:

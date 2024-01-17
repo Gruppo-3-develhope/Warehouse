@@ -20,6 +20,7 @@ public class UtenteMenu {
                 System.out.println("0. Esci\n");
 
                 int opzione = scanner.nextInt();
+                int tipo = 0;
 
                 switch (opzione) {
 
@@ -38,11 +39,31 @@ public class UtenteMenu {
                         break;
 
                     case 4:
+
+
+                        while (true) {
+                            try {
+                                System.out.println("Inserisci il tipo di articolo da ricercare");
+                                System.out.println("1 Notebook");
+                                System.out.println("2 Smartphone");
+                                System.out.println("3 Tablet\n");
+                                tipo = scanner.nextInt();
+                                if (tipo < 1 || tipo > 3) {
+                                    System.out.println("Devi inserire solo i valori 1, 2 o 3. Riprova.");
+                                    scanner.nextLine();
+                                } else {
+                                    break;
+                                }
+                            } catch (InputMismatchException e) {
+                                System.out.println("Devi inserire un numero intero (1, 2 o 3): ");
+                                scanner.nextLine();
+                            }
+                        }
                         try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaTipo();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaTipo(tipo);
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
-                            System.err.println(e.getMessage());
+                            System.out.println("Nessun prodotto di quel tipo trovato!");
                         }
                         break;
 
@@ -82,7 +103,7 @@ public class UtenteMenu {
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
                             System.out.println("Nessun prezzo di vendita di " + priceSearch + " trovato!");
-                }
+                        }
                         break;
 
 
