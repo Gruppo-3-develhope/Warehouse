@@ -185,9 +185,9 @@ public class Magazzino {
 //        prodotti.addAll(smartphones);
 //    }
 
-//    public List<Prodotto> getTablets() {
-//        return prodotti.stream().filter((p) -> p.getArticolo() == TipoProdotto.TABLET).toList();
-//    }
+    public List<Prodotto> getTablets() {
+        return prodotti.stream().filter((p) -> p.getArticolo() == TipoProdotto.TABLET).toList();
+    }
 
 
 
