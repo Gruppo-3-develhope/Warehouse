@@ -59,6 +59,7 @@ public class AmministratoreMenu {
                     case 2:
                         try {
                             Main.magazzino.scaricoMerce();
+                            System.out.println("Magazzino svuotato");
                         } catch (IOException e) {
                             System.err.println(e.getMessage());
                         }
@@ -206,7 +207,10 @@ public class AmministratoreMenu {
                         break;
 
                     case 13:
-                        Main.magazzino.scaricoMerceTramiteId();
+                        System.out.println("Inserisci l'id del prodotto da scaricare");
+                        scanner.nextLine();
+                        String id = scanner.nextLine();
+                        Main.magazzino.scaricoMerceTramiteId(id);
                         break;
 
                     case 0:

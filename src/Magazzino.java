@@ -67,12 +67,11 @@ public class Magazzino {
 
     public void scaricoMerce() throws IOException {
         prodotti.clear();
-        System.out.println("Magazzino svuotato");
     }
 
-    public void scaricoMerceTramiteId() {
-        System.out.println("Inserisci l'id del prodotto da scaricare");
-        String id = sc.nextLine();
+    public void scaricoMerceTramiteId(String id) {
+//        System.out.println("Inserisci l'id del prodotto da scaricare");
+//        String id = sc.nextLine();
         boolean trovato = false;
         for (int i = 0; i < prodotti.size() && !trovato; i++) {
             Prodotto prodotto = prodotti.get(i);
@@ -87,10 +86,14 @@ public class Magazzino {
     }
 
     public void stampaMagazzino() {
-        System.out.println("I prodotti presenti in magazzino sono i seguenti:");
-        for (Prodotto prodotto : prodotti) {
-            prodotto.displayInfo();
-            System.out.println("********************************");
+        if (prodotti.isEmpty()) {
+            System.out.println("Non ci sono prodotti nel magazzino");
+        } else {
+            System.out.println("I prodotti presenti in magazzino sono i seguenti:");
+            for (Prodotto prodotto : prodotti) {
+                prodotto.displayInfo();
+                System.out.println("********************************");
+            }
         }
     }
 
