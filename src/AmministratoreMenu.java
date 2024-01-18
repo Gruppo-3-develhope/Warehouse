@@ -30,8 +30,6 @@ public class AmministratoreMenu {
                 switch (opzione) {
 
                     case 1:
-
-
                         while (true) {
                             try {
                                 System.out.println("Inserisci il tipo di articolo da ricercare");
@@ -131,11 +129,11 @@ public class AmministratoreMenu {
                         break;
 
                     case 9:
-                        double priceSearch;
+                        double sellingPrice;
                         System.out.println("Inserisci il prezzo di vendita da ricercare");
                         do {
                             try {
-                                priceSearch = scanner.nextDouble();
+                                sellingPrice = scanner.nextDouble();
                                 break;
 
                             } catch (InputMismatchException e) {
@@ -144,19 +142,31 @@ public class AmministratoreMenu {
                             }
                         } while (true);
                         try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita(priceSearch);
+                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita(sellingPrice);
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
-                            System.out.println("Nessun prezzo di vendita di " + priceSearch + " trovato!");
+                            System.out.println("Nessun prezzo di vendita di " + sellingPrice + " trovato!");
                         }
                         break;
 
                     case 10:
+                        double purchasePrice;
+                        System.out.println("Inserisci il prezzo di acquisto da ricercare");
+                        do {
+                            try {
+                                purchasePrice = scanner.nextDouble();
+                                break;
+
+                            } catch (InputMismatchException e) {
+                                System.out.println("Input non valido. Assicurati di inserire un numero in virgola mobile.");
+                                scanner.nextLine();
+                            }
+                        } while (true);
                         try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoAcquisto();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoAcquisto(purchasePrice);
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
-                            System.err.println(e.getMessage());
+                            System.out.println("Nessun prezzo di acquisto di " + purchasePrice + " trovato!");
                         }
                         break;
 
@@ -183,13 +193,13 @@ public class AmministratoreMenu {
                                 scanner.nextLine();
                             }
                         } while (true);
-                            try {
-                                List<Prodotto> prodotti = Main.magazzino.ricercaRangeDiPrezzo(prezzoDiVenditaMinimo, prezzoDiVenditaMassimo);
-                                stampaProdotti(prodotti);
-                            } catch (Exception e) {
-                                System.out.println("Nessun prezzo di vendita nel range è stato trovato!");
-                            }
-                            break;
+                        try {
+                            List<Prodotto> prodotti = Main.magazzino.ricercaRangeDiPrezzo(prezzoDiVenditaMinimo, prezzoDiVenditaMassimo);
+                            stampaProdotti(prodotti);
+                        } catch (Exception e) {
+                            System.out.println("Nessun prezzo di vendita nel range è stato trovato!");
+                        }
+                        break;
 
                     case 12:
                         Main.magazzino.inizializzaMagazzino();

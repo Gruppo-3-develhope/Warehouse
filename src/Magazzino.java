@@ -123,19 +123,16 @@ public class Magazzino {
         return prodottiTrovati;
     }
 
-    public List<Prodotto> ricercaPrezzoAcquisto() throws Exception {
-        System.out.println("Inserisci il prezzo di acquisto da ricercare");
-        double prezzoDiAcquisto = Double.parseDouble(sc.nextLine());
-        ArrayList<Prodotto> prodottiTrovati = (ArrayList<Prodotto>) prodotti.stream().filter((p) -> p.getPrezzoAquisto() == prezzoDiAcquisto).toList();
+    public List<Prodotto> ricercaPrezzoAcquisto(double purchasePrice) throws Exception {
+        ArrayList<Prodotto> prodottiTrovati = (ArrayList<Prodotto>) prodotti.stream().filter((p) -> p.getPrezzoAquisto() == purchasePrice).toList();
         if (prodottiTrovati.isEmpty()) {
-            System.out.println("Nessun prezzo di acquisto di " + prezzoDiAcquisto + " trovato!");
             throw new Exception("Not Found");
         }
         return prodottiTrovati;
     }
 
-    public List<Prodotto> ricercaPrezzoVendita(double priceSearch) throws Exception {
-        List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getPrezzoVendita() == priceSearch).toList();
+    public List<Prodotto> ricercaPrezzoVendita(double sellingPrice) throws Exception {
+        List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getPrezzoVendita() == sellingPrice).toList();
         if (prodottiTrovati.isEmpty()) {
             throw new Exception("Not found");
         }
@@ -143,12 +140,6 @@ public class Magazzino {
     }
 
     public List<Prodotto> ricercaRangeDiPrezzo(double prezzoDiVenditaMinimo, double prezzoDiVenditaMassimo) throws Exception {
-//        System.out.println("Inserisci il prezzo minimo da ricercare");
-//        double prezzoDiVenditaMinimo = Double.parseDouble(sc.nextLine());
-//        System.out.println("Inserisci il prezzo massimo da ricercare");
-//        double prezzoDiVenditaMassimo = Double.parseDouble(sc.nextLine());
-//        System.out.println("LOG - Prezzo di vendita minimo: " + prezzoDiVenditaMinimo);
-//        System.out.println("LOG - Prezzo di vendita max: " + prezzoDiVenditaMassimo);
         List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) ->
                 p.getPrezzoVendita() >= prezzoDiVenditaMinimo && p.getPrezzoVendita() <= prezzoDiVenditaMassimo).toList();
         if (prodottiTrovati.isEmpty()) {

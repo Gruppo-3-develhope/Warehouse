@@ -92,11 +92,11 @@ public class UtenteMenu {
                         break;
 
                     case 7:
-                        double priceSearch;
+                        double sellingPrice;
                         System.out.println("Inserisci il prezzo di vendita da ricercare");
                         do {
                             try {
-                                priceSearch = scanner.nextDouble();
+                                sellingPrice = scanner.nextDouble();
                                 break;
 
                             } catch (InputMismatchException e) {
@@ -105,10 +105,10 @@ public class UtenteMenu {
                             }
                         } while (true);
                         try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita(priceSearch);
+                            List<Prodotto> prodotti = Main.magazzino.ricercaPrezzoVendita(sellingPrice);
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
-                            System.out.println("Nessun prezzo di vendita di " + priceSearch + " trovato!");
+                            System.out.println("Nessun prezzo di vendita di " + sellingPrice + " trovato!");
                         }
                         break;
 
