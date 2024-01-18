@@ -161,7 +161,10 @@ public class Magazzino {
         double prezzoDiVenditaMinimo = Double.parseDouble(sc.nextLine());
         System.out.println("Inserisci il prezzo massimo da ricercare");
         double prezzoDiVenditaMassimo = Double.parseDouble(sc.nextLine());
-        List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getPrezzoVendita() > prezzoDiVenditaMinimo && p.getPrezzoVendita() < prezzoDiVenditaMassimo).toList();
+        System.out.println("LOG - Prezzo di vendita minimo: " + prezzoDiVenditaMinimo);
+        System.out.println("LOG - Prezzo di vendita max: " + prezzoDiVenditaMassimo);
+        List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) ->
+                p.getPrezzoVendita() >= prezzoDiVenditaMinimo && p.getPrezzoVendita() <= prezzoDiVenditaMassimo).toList();
         if (prodottiTrovati.isEmpty()) {
             System.out.println("Nessun prezzo di vendita nel range " + prezzoDiVenditaMinimo + " - " + prezzoDiVenditaMassimo + " trovato!");
             throw new Exception("Not Found");
