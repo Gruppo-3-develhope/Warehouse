@@ -2,12 +2,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GestoreUtenti {
-
     public static void gestoreUtenti() {
         Scanner scanner = new Scanner(System.in);
 
-
-        System.out.println("Benvenuto nel nostro ecommerce!");
+        System.out.println("Benvenuto nell' ecommerce progettato dal team S.P.A.M!");
         while (true) {
 
             try {
@@ -21,14 +19,15 @@ public class GestoreUtenti {
                 switch (scelta) {
                     case 1:
                         System.out.println("Hai selezionato Utente Normale.");
-                        Utente.utenteNormale();
+                        UtenteMenu.utenteNormale();
 
                         break;
                     case 2:
                         System.out.println("Hai selezionato Utente Amministratore.");
-                        Amministratore.utenteAmministratore();
+                        AmministratoreMenu.utenteAmministratore();
                         break;
                     case 0:
+                        scanner.close();
                         System.out.println("Uscita dal programma.");
                         System.exit(0);
                         break;
