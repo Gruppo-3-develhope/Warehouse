@@ -151,48 +151,45 @@ public class Magazzino {
         return prodottiTrovati;
     }
 
-    public int contaProdotti() throws IOException {
-        return prodotti.size();
-    }
+//    public int contaProdotti() throws IOException {
+//        return prodotti.size();
+//    }
 
-    public int contaNotebooks() throws IOException {
-        return getNotebooks().size();
-    }
+//    public int contaNotebooks() throws IOException {
+//        return getNotebooks().size();
+//    }
 
-    public int contaTablets() throws IOException {
-        return getTablets().size();
-    }
+//    public int contaTablets() throws IOException {
+//        return getTablets().size();
+//    }
 
-    public int contaSmartphones() throws IOException {
-        return getSmartphones().size();
-    }
+//    public int contaSmartphones() throws IOException {
+//        return getSmartphones().size();
+//    }
 
     public List<Prodotto> getNotebooks() {
         return prodotti.stream().filter((p) -> p.getArticolo() == TipoProdotto.NOTEBOOK).toList();
     }
 
-    public void setNotebooks(ArrayList<Notebook> notebooks) {
-        prodotti.removeAll(prodotti.stream().filter((p) -> p.getArticolo() == TipoProdotto.NOTEBOOK).toList());
-        prodotti.addAll(notebooks);
-    }
+//    public void setNotebooks(ArrayList<Notebook> notebooks) {
+//        prodotti.removeAll(prodotti.stream().filter((p) -> p.getArticolo() == TipoProdotto.NOTEBOOK).toList());
+//        prodotti.addAll(notebooks);
+//    }
 
     public List<Prodotto> getSmartphones() {
         return prodotti.stream().filter((p) -> p.getArticolo() == TipoProdotto.SMARTPHONE).toList();
     }
 
-    public void setSmartphones(ArrayList<Smartphone> smartphones) {
-        prodotti.removeAll(prodotti.stream().filter((p) -> p.getArticolo() == TipoProdotto.SMARTPHONE).toList());
-        prodotti.addAll(smartphones);
-    }
+//    public void setSmartphones(ArrayList<Smartphone> smartphones) {
+//        prodotti.removeAll(prodotti.stream().filter((p) -> p.getArticolo() == TipoProdotto.SMARTPHONE).toList());
+//        prodotti.addAll(smartphones);
+//    }
 
-    public List<Prodotto> getTablets() {
-        return prodotti.stream().filter((p) -> p.getArticolo() == TipoProdotto.TABLET).toList();
-    }
+//    public List<Prodotto> getTablets() {
+//        return prodotti.stream().filter((p) -> p.getArticolo() == TipoProdotto.TABLET).toList();
+//    }
 
-    public void setTablets(ArrayList<Tablet> tablets) {
-        prodotti.removeAll(prodotti.stream().filter((p) -> p.getArticolo() == TipoProdotto.TABLET).toList());
-        prodotti.addAll(tablets);
-    }
+
 
 //    public int richiediTipoProdotto(int tipo) {
 //        do {
