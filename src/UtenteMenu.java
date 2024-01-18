@@ -68,20 +68,26 @@ public class UtenteMenu {
                         break;
 
                     case 5:
+                        System.out.println("Inserisci il produttore da ricercare");
+                        scanner.nextLine();
+                        String produttore = scanner.nextLine();
                         try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaProduttore();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaProduttore(produttore);
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
-                            System.err.println(e.getMessage());
+                            System.out.println("Nessun produttore " + produttore + " trovato!");
                         }
                         break;
 
                     case 6:
+                        System.out.println("Inserisci il modello da ricercare");
+                        scanner.nextLine();
+                        String modello = scanner.nextLine();
                         try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaModello();
+                            List<Prodotto> prodotti = Main.magazzino.ricercaModello(modello);
                             stampaProdotti(prodotti);
                         } catch (Exception e) {
-                            System.err.println(e.getMessage());
+                            System.out.println("Nessun modello " + modello + " trovato!");
                         }
                         break;
 
@@ -108,33 +114,58 @@ public class UtenteMenu {
 
 
                     case 8:
-                        try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaRangeDiPrezzo();
-                            stampaProdotti(prodotti);
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
+                        double prezzoDiVenditaMinimo = 0.0;
+                        double prezzoDiVenditaMassimo = 0.0;
+                        do {
+                            try {
+                                System.out.println("Inserisci il prezzo minimo da ricercare");
+                                prezzoDiVenditaMinimo = scanner.nextDouble();
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Input non valido. Assicurati di inserire un numero in virgola mobile.");
+                                scanner.nextLine();
+                            }
+                        } while (true);
+                        do {
+                            try {
+                                System.out.println("Inserisci il prezzo massimo da ricercare");
+                                prezzoDiVenditaMassimo = scanner.nextDouble();
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println("Input non valido. Assicurati di inserire un numero in virgola mobile.");
+                                scanner.nextLine();
+                            }
+                        } while (true);
+                            try {
+                                List<Prodotto> prodotti = Main.magazzino.ricercaRangeDiPrezzo(prezzoDiVenditaMinimo, prezzoDiVenditaMassimo);
+                                stampaProdotti(prodotti);
+                            } catch (Exception e) {
+                                System.out.println("Nessun prezzo di vendita nel range è stato trovato!");
+                            }
+                            break;
+
+                            case 0:
+                                scanner.close();
+                                System.out.println("Uscita dal programma.");
+                                System.exit(0);
+                                break;
+
                         }
-                        break;
 
-                    case 0:
-                        scanner.close();
-                        System.out.println("Uscita dal programma.");
-                        System.exit(0);
-                        break;
-
+                } catch(InputMismatchException e){
+                    System.out.println("Errore: inserisci un numero valido.\n");
+                    scanner.next();
                 }
-            } catch (InputMismatchException e) {
-                System.out.println("Errore: inserisci un numero valido.\n");
-                scanner.next();
+
+            }
+        }
+
+
+        static void stampaProdotti (List < Prodotto > prodotti) {
+            System.out.println("Trovati " + prodotti.size() + " prodotti");
+            for (Prodotto prodotto : prodotti) {
+                prodotto.displayInfo();
             }
         }
     }
-
-    static void stampaProdotti(List<Prodotto> prodotti) {
-        System.out.println("Trovati " + prodotti.size() + " prodotti");
-        for (Prodotto prodotto : prodotti) {
-            prodotto.displayInfo();
-        }
-    }
-}
 

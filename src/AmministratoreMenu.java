@@ -106,23 +106,23 @@ public class AmministratoreMenu {
                         }
                         break;
 
-                    case 7:
-                        try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaProduttore();
-                            stampaProdotti(prodotti);
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
-                        break;
+//                    case 7:
+//                        try {
+//                            List<Prodotto> prodotti = Main.magazzino.ricercaProduttore();
+//                            stampaProdotti(prodotti);
+//                        } catch (Exception e) {
+//                            System.err.println(e.getMessage());
+//                        }
+//                        break;
 
-                    case 8:
-                        try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaModello();
-                            stampaProdotti(prodotti);
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
-                        break;
+//                    case 8:
+//                        try {
+//                            List<Prodotto> prodotti = Main.magazzino.ricercaModello();
+//                            stampaProdotti(prodotti);
+//                        } catch (Exception e) {
+//                            System.err.println(e.getMessage());
+//                        }
+//                        break;
 
                     case 9:
                         double priceSearch;
@@ -154,14 +154,14 @@ public class AmministratoreMenu {
                         }
                         break;
 
-                    case 11:
-                        try {
-                            List<Prodotto> prodotti = Main.magazzino.ricercaRangeDiPrezzo();
-                            stampaProdotti(prodotti);
-                        } catch (Exception e) {
-                            System.err.println(e.getMessage());
-                        }
-                        break;
+//                    case 11:
+//                        try {
+//                            List<Prodotto> prodotti = Main.magazzino.ricercaRangeDiPrezzo();
+//                            stampaProdotti(prodotti);
+//                        } catch (Exception e) {
+//                            System.err.println(e.getMessage());
+//                        }
+//                        break;
 
                     case 12:
                         Main.magazzino.inizializzaMagazzino();

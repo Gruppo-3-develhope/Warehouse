@@ -95,13 +95,11 @@ public class Magazzino {
     }
 
     public List<Prodotto> ricercaTipo(int tipo) throws Exception {
-
         TipoProdotto tipoProdotto = switch (tipo) {
             case 1 -> TipoProdotto.NOTEBOOK;
             case 2 -> TipoProdotto.SMARTPHONE;
             default -> TipoProdotto.TABLET;
         };
-
         List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getArticolo().equals(tipoProdotto)).toList();
         if (prodottiTrovati.isEmpty()) {
             throw new Exception("Not Found");
@@ -109,23 +107,17 @@ public class Magazzino {
         return prodottiTrovati;
     }
 
-    public List<Prodotto> ricercaProduttore() throws Exception {
-        System.out.println("Inserisci il produttore da ricercare");
-        String produttore = sc.nextLine();
-        List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getProduttore().equals(produttore)).toList();
+    public List<Prodotto> ricercaProduttore(String produttore) throws Exception {
+        List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getProduttore().equalsIgnoreCase(produttore)).toList();
         if (prodottiTrovati.isEmpty()) {
-            System.out.println("Nessun produttore " + produttore + " trovato!");
             throw new Exception("Not Found");
         }
         return prodottiTrovati;
     }
 
-    public List<Prodotto> ricercaModello() throws Exception {
-        System.out.println("Inserisci il modello da ricercare");
-        String modello = sc.nextLine();
-        List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getModello().equals(modello)).toList();
+    public List<Prodotto> ricercaModello(String modello) throws Exception {
+        List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) -> p.getModello().equalsIgnoreCase(modello)).toList();
         if (prodottiTrovati.isEmpty()) {
-            System.out.println("Nessun modello " + modello + " trovato!");
             throw new Exception("Not Found");
         }
         return prodottiTrovati;
@@ -150,17 +142,16 @@ public class Magazzino {
         return prodottiTrovati;
     }
 
-    public List<Prodotto> ricercaRangeDiPrezzo() throws Exception {
-        System.out.println("Inserisci il prezzo minimo da ricercare");
-        double prezzoDiVenditaMinimo = Double.parseDouble(sc.nextLine());
-        System.out.println("Inserisci il prezzo massimo da ricercare");
-        double prezzoDiVenditaMassimo = Double.parseDouble(sc.nextLine());
-        System.out.println("LOG - Prezzo di vendita minimo: " + prezzoDiVenditaMinimo);
-        System.out.println("LOG - Prezzo di vendita max: " + prezzoDiVenditaMassimo);
+    public List<Prodotto> ricercaRangeDiPrezzo(double prezzoDiVenditaMinimo, double prezzoDiVenditaMassimo) throws Exception {
+//        System.out.println("Inserisci il prezzo minimo da ricercare");
+//        double prezzoDiVenditaMinimo = Double.parseDouble(sc.nextLine());
+//        System.out.println("Inserisci il prezzo massimo da ricercare");
+//        double prezzoDiVenditaMassimo = Double.parseDouble(sc.nextLine());
+//        System.out.println("LOG - Prezzo di vendita minimo: " + prezzoDiVenditaMinimo);
+//        System.out.println("LOG - Prezzo di vendita max: " + prezzoDiVenditaMassimo);
         List<Prodotto> prodottiTrovati = prodotti.stream().filter((p) ->
                 p.getPrezzoVendita() >= prezzoDiVenditaMinimo && p.getPrezzoVendita() <= prezzoDiVenditaMassimo).toList();
         if (prodottiTrovati.isEmpty()) {
-            System.out.println("Nessun prezzo di vendita nel range " + prezzoDiVenditaMinimo + " - " + prezzoDiVenditaMassimo + " trovato!");
             throw new Exception("Not Found");
         }
         return prodottiTrovati;
